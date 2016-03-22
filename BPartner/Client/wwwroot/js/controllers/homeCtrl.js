@@ -6,10 +6,10 @@
     HomeCtrl.$inject = ['$scope', '$firebaseArray', 'ChatService'];
                              
     function HomeCtrl($scope, $firebaseArray, ChatService) {
-        var firebaseObj = new Firebase(firebaseUrl + 'messages');
-        var syncObj = $firebaseArray(firebaseObj);
-        $scope.messages = syncObj;
+       
         $scope.newMessageText = '';
+
+        $scope.messages = ChatService.messages;
 
         $scope.addMessage = function () {
             ChatService.addMessage($scope.newMessageText);

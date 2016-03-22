@@ -5,26 +5,29 @@
         .module('Services')
         .service('ChatService', ChatService);
 
-    ChatService.$inject = [];
+    ChatService.$inject = ['$firebaseArray'];
 
-    var messages = [];
 
-    function ChatService() {
+    function ChatService($firebaseArray) {
 
         var services = {};
 
+        var firebaseObj = new Firebase(firebaseUrl + 'messages');
+        var syncObj = $firebaseArray(firebaseObj);
+        services.messages = syncObj;
+
         services.addMessage = addMessage;
+
+        function addMessage(messageText) {
+            if (messageText == '')
+                return;
+            services.messages.$add({
+                text: messageText
+            });
+        }
 
         return services;
     }
 
-    function addMessage(messageText) {
-        if (messageText == '')
-            return;
-        //messages.$add({
-        //    text: messageText
-        //});
-
-        console.log("Đã thêm message " + messageText);
-    }
+    
 })();
