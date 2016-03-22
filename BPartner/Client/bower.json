@@ -1,0 +1,15 @@
+{
+  "name": "ASP.NET",
+  "private": true,
+  "dependencies": {
+    "jquery": "2.2.2",
+    "angularjs": "1.5.2",
+    "ui-route": "0.2.18",
+    "moment": "2.12.0",
+    "velocity": "1.2.3",
+    "bourbon": "4.2.6",
+    "mdi": "1.5.54",
+    "firebase": "2.4.1",
+    "angularfire": "1.1.4"
+  }
+}

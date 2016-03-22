@@ -1,0 +1,18 @@
+﻿<div class="main-section">
+    <div class="p+">
+        <div class="p+"  ng-repeat="m in messages">
+            <div class="card">
+                <div class="p+">
+                    {{m.text}}
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="p+">
+                <form ng-submit="addMessage()">
+                    <input type="text" ng-model="newMessageText">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
