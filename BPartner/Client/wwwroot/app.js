@@ -15,56 +15,60 @@
          .config(function ($locationProvider, $stateProvider) {
 
              $stateProvider
-                 .state('app',
+                 .state('unauthorize',
                  {
-                     url: '',
-                     views:
-                     {
-                         'header':
-                         {
-                             templateUrl: 'templates/header/header.html'
+                     url: '/unauthorize',
+                     views: {
+                         'header': {
+                             templateUrl: 'templates/header/unauthorize-header.html'
                          }
                      },
-                     redirectTo: 'app.home'
+                     redirectTo: 'unauthorize.login'
                  })
-                 .state('app.home',
-                 {
-                     url: '/',
-                     views:
-                     {
-                         'main@':
-                         {
-                             templateUrl: 'templates/home/home.html',
-                             controller: 'homeCtrl'
-                         }
-                     }
-                 })
-                 .state('app.authorize',
-                 {
-                     url: '/authorize',
-                     redirectTo: 'app.authorize.login'
-                 })
-                 .state('app.authorize.login',
+                 .state('unauthorize.login',
                  {
                      url: '/login',
-                     views:
-                     {
-                         'main@':
-                         {
+                     views: {
+                         'main@': {
                              templateUrl: 'templates/authorize/login.html',
                              controller: 'loginCtrl'
                          }
                      }
                  })
-                 .state('app.authorize.register',
+                .state('unauthorize.register',
                  {
                      url: '/register',
-                     views:
-                     {
-                         'main@':
-                         {
+                     views: {
+                         'main@': {
                              templateUrl: 'templates/authorize/register.html',
                              controller: 'registerCtrl'
+                         }
+                     }
+                 })
+                .state('app',
+                 {
+                     url: '',
+                     views: {
+                         'header': {
+                             templateUrl: 'templates/header/header.html'
+                         }
+                     },
+                     redirectTo: 'app.home',
+                     requireLogin: true,
+                     resolve: {
+                         user: function resolver(AuthorizeService) {
+                             console.info("Lấy thông tin user.")
+                             return AuthorizeService.getUser();
+                         }
+                     }
+                 })
+                 .state('app.home',
+                 {
+                     url: '/',
+                     views: {
+                         'main@': {
+                             templateUrl: 'templates/home/home.html',
+                             controller: 'homeCtrl'
                          }
                      }
                  });
@@ -74,7 +78,13 @@
              $rootScope.LayoutService = LayoutService;
 
              $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
-                 if (toState.redirectTo) {
+                 if (toState.requireLogin === true) {
+                     if (toState.user === undefined) {
+                         event.preventDefault();
+                         $state.go('unauthorize.login');
+                     }
+                 }
+                 else if (toState.redirectTo) {
                      event.preventDefault();
                      $state.go(toState.redirectTo, toParams)
                  }

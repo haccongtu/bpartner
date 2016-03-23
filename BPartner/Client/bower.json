@@ -10,6 +10,7 @@
     "bourbon": "4.2.6",
     "mdi": "1.5.54",
     "firebase": "2.4.1",
-    "angularfire": "1.1.4"
+    "angularfire": "1.1.4",
+    "ngprogress": "1.1.3"
   }
 }

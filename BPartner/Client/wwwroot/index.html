@@ -5,10 +5,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>BPartner</title>
+    <title>BPartner {{$state.current.name}}</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,400italic,300italic&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+    <!--<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,400italic,300italic&subset=latin,vietnamese" rel="stylesheet" type="text/css">-->
     <link href="lib/lumx/lumx.css" rel="stylesheet" />
 
     <link rel="shortcut icon" type="image/png" href="images/fav.png">
@@ -59,19 +59,25 @@
     <!-- Button -->
     <script src="lib/lumx/button/button_directive.js"></script>
     <script src="lib/lumx/button/button_template.js"></script>
-    <!-- Text-Field -->
+    <!-- Text Field -->
     <script src="lib/lumx/text-field/text-field_directive.js"></script>
     <script src="lib/lumx/text-field/text-field_template.js"></script>
+    <!-- Radio Button -->
+    <script src="lib/lumx/radio/radio-button_directive.js"></script>
+    <script src="lib/lumx/radio/radio-button_template.js"></script>
 
     <script src="lib/lumx/plugin/depth_service.js"></script>
     <script src="lib/lumx/plugin/event-scheduler_service.js"></script>
     <script src="lib/lumx/plugin/transclude-replace_directive.js"></script>
+    <script src="lib/lumx/plugin/utils_service.js"></script>
 
+    <script src="lib/ngprogress/build/ngprogress.js"></script>
     <!-- App -->
     <script src="app.js"></script>
 
     <script src="js/services/layout_services.js"></script>
     <script src="js/services/chat_services.js"></script>
+    <script src="js/services/authorize_services.js"></script>
 
     <script src="js/directives/main-nav_directive.js"></script>
     <script src="js/directives/main-nav-link_directive.js"></script>

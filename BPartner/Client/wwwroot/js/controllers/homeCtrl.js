@@ -4,15 +4,19 @@
     .controller('homeCtrl', HomeCtrl);
 
     HomeCtrl.$inject = ['$scope', '$firebaseArray', 'ChatService'];
-                             
+
     function HomeCtrl($scope, $firebaseArray, ChatService) {
-       
-        $scope.newMessageText = '';
 
-        $scope.messages = ChatService.messages;
+        var messsages = ChatService.messages;
+        var newMesssage = {};
 
-        $scope.addMessage = function () {
-            ChatService.addMessage($scope.newMessageText);
+        $scope.newMesssage = newMesssage;
+        $scope.messages = messsages;
+        $scope.addMessage = addMessage;
+
+        function addMessage() {
+            ChatService.addMessage(newMesssage.value);
+            newMesssage.value = '';
         };
     }
 })();

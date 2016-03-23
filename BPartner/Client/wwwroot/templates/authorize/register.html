@@ -1,32 +1,39 @@
 ﻿<div class="main-section">
-    <div class="p+ pt0">
-        <div flex-container="row" flex-align="center">
-            <div class="p+" flex-item="5">
-                <div class="card">
-                    <div class="card__actions">
-                        <h1>Đăng ký</h1>
-                        <hr />
-                    </div>
-                    <div class="p+">
-                        <lx-text-field label="Email" lx-allow-clear="true">
-                            <input type="email" ng-model="email">
-                        </lx-text-field>
+    <div flex-container="row" flex-align="center">
+        <form ng-hide="vm.isWaiting" ng-submit="register(user.email,user.password)" class="card" flex-item="5">
+            <div class="card__actions">
+                <h3>Đăng ký</h3>
+                <hr />
+            </div>
+            <div class="p+" ng-if="vm.isError">
+                <p style="color:red">{{vm.error}}</p>
+            </div>
+            <div class="p+">
+                <lx-text-field label="Email" lx-allow-clear="true">
+                    <input type="email" ng-model="user.email">
+                </lx-text-field>
+                <lx-text-field label="Họ và tên" lx-allow-clear="true">
+                    <input type="text" ng-model="user.name">
+                </lx-text-field>
+                <lx-text-field label="Mật khẩu" lx-error="user.password != user.repeatedPassword">
+                    <input type="password" ng-model="user.password">
+                </lx-text-field>
 
-                        <lx-text-field label="Mật khẩu"
-                                       lx-error="(vm.password.length == vm.repeatePassword.length == 0)&& !passwordValidation(vm.password) || vm.password !== vm.repeatedPassword">
-                            <input type="password" ng-model="vm.password">
-                        </lx-text-field>
-
-                        <lx-text-field label="Nhập lại mật khẩu"
-                                       lx-error="(vm.password.length == vm.repeatePassword.length == 0)&& !passwordValidation(vm.repeatedPassword) || vm.password !== vm.repeatedPassword">
-                            <input type="password" ng-model="vm.repeatedPassword">
-                        </lx-text-field>
-                    </div>
-                    <div class="card__actions" flex-container="row">
-                        <lx-button lx-color="black" lx-type="flat" flex-item ui-sref="app.authorize.login">Đăng nhập</lx-button>
-                        <lx-button lx-color="green" lx-type="flat" flex-item>Đăng ký</lx-button>
-                    </div>
-                </div>
+                <lx-text-field label="Nhập lại mật khẩu"
+                               lx-error="user.password != user.repeatedPassword">
+                    <input type="password" ng-model="user.repeatedPassword">
+                </lx-text-field>
+            </div>
+            <div class="card__actions" flex-container="row">
+                <lx-button lx-color="black" lx-type="flat" flex-item ui-sref="unauthorize.login">Đăng nhập</lx-button>
+                <lx-button lx-color="green" lx-type="flat" flex-item type="submit">Đăng ký</lx-button>
+            </div>
+        </form>
+        <div ng-show="vm.isWaiting" class="card" flex-item="5">
+            <div class="p+">
+                <center>
+                    <img src="../../images/loading.gif" width="150" height="150" />
+                </center>
             </div>
         </div>
     </div>
