@@ -56,18 +56,6 @@
                          }
                      }
                  })
-                 .state('app.authorize.profile',
-                 {
-                     url: '/profile',
-                     views:
-                     {
-                         'main@':
-                         {
-                             templateUrl: 'templates/personal/profile.html',
-                             controller: 'personalCtrl'
-                         }
-                     }
-                 })
                  .state('app.authorize.register',
                  {
                      url: '/register',
