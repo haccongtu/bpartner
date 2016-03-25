@@ -1,5 +1,32 @@
 ﻿<ul class="main-nav main-nav--{{ lxMainNav.context }}">
     <li>
-        <lx-main-nav-link lx-context="{{ lxMainNav.context }}" lx-label="Getting started" lx-state="app.getting-started"></lx-main-nav-link>
+        <a class="main-nav-link__state" ui-sref="app.profile" ui-sref-active="main-nav-link__state--is-active">
+            Trang cá nhân
+            <span class="mdi mdi-account"></span>
+        </a>
+    </li>
+    <li>
+        <a class="main-nav-link__state" ui-sref="app.friends" ui-sref-active="main-nav-link__state--is-active">
+            Bạn bè
+            <span class="mdi mdi-account-multiple"></span>
+        </a>
+    </li>
+    <li>
+        <a class="main-nav-link__state" ui-sref="app.news" ui-sref-active="main-nav-link__state--is-active">
+            Tin tức
+            <span class="mdi mdi-library-books"></span>
+        </a>
+    </li>
+    <li>
+        <a class="main-nav-link__state" ui-sref="app.settings" ui-sref-active="main-nav-link__state--is-active">
+            Cài đặt
+            <span class="mdi mdi-settings"></span>
+        </a>
+    </li>
+    <li>
+        <a class="main-nav-link__state">
+            Đăng xuất
+            <span class="mdi mdi-arrow-left-drop-circle-outline"></span>
+        </a>
     </li>
 </ul>

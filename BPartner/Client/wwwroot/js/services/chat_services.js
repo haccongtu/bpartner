@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('Services')
+        .module('app')
         .service('ChatService', ChatService);
 
     ChatService.$inject = ['$firebaseArray'];

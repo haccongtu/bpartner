@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('Services')
+        .module('app')
         .service('LayoutService', LayoutService);
 
     LayoutService.$inject = [];

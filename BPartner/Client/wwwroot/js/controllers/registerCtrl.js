@@ -7,22 +7,21 @@
 
     function RegisterCtrl($scope, $state, AuthorizeService) {
 
-
-
         var user = { email: '', password: '', name: '', repeatedPassword: '' };
         var vm = { isWaiting: false, isError: false, error: '' };
 
         function register() {
             $scope.vm.isWaiting = true;
             AuthorizeService.register(user, function (result) {
-                if (result.success)
+                $scope.vm.isWaiting = false;
+                if (result.success) {
                     $state.go('unauthorize.login');
+                }
                 else {
                     $scope.vm.error = result.error.message;
                     $scope.vm.isError = true;
-                    $scope.vm.isWaiting = false;
-                    $scope.$apply();
                 }
+                $scope.$apply();
             });
         }
 

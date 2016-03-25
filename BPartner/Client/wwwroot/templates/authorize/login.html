@@ -2,23 +2,30 @@
     <div class="p+ pt0">
         <div flex-container="row" flex-align="center">
             <div class="p+" flex-item="5">
-                <div class="card">
+                <form ng-hide="vm.isWaiting" ng-submit="login()" class="card">
                     <div class="card__actions">
                         <h1>Đăng nhập</h1>
                         <hr />
                     </div>
                     <div class="p+">
                         <lx-text-field label="Email" lx-allow-clear="true">
-                            <input type="email" ng-model="email">
+                            <input type="email" ng-model="user.email">
                         </lx-text-field>
 
                         <lx-text-field label="Mật khẩu">
-                            <input type="password" ng-model="vm.password">
+                            <input type="password" ng-model="user.password">
                         </lx-text-field>
                     </div>
                     <div class="card__actions" flex-container="row">
                         <lx-button lx-color="black" lx-type="flat" flex-item ui-sref="unauthorize.register">Đăng ký</lx-button>
-                        <lx-button lx-color="green" lx-type="flat" flex-item>Đăng nhập</lx-button>
+                        <lx-button lx-color="green" lx-type="flat" flex-item type="submit">Đăng nhập</lx-button>
+                    </div>
+                </form>
+                <div ng-show="vm.isWaiting" class="card">
+                    <div class="p+">
+                        <center>
+                            <img src="../../images/loading.gif" width="150" height="150" />
+                        </center>
                     </div>
                 </div>
             </div>
