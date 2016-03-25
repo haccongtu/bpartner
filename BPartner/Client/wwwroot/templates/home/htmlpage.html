@@ -1,0 +1,19 @@
+﻿<div class="main-section">
+    <div class="p+">
+        <h1>Đây là home 2</h1>
+        <div class="p+" ng-repeat="m in messages">
+            <div class="card">
+                <div class="p+">
+                    {{m.text}}
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="p+">
+                <form ng-submit="addMessage()">
+                    <input type="text" ng-model="newMessageText">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

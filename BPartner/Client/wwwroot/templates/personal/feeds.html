@@ -1,0 +1,25 @@
+﻿<div class="main-section" lazy-load>
+    <div style="margin-top: 5px" ng-repeat="feed in cachedFeeds">
+        <div class="card">
+            <div flex-container="row">
+                <div class="card__img card__img--left" style="height: 100px; margin-top: 10px; margin-left: 10px;">
+                    <img class="img-circle" src="../../images/logo2.jpg">
+                </div>
+
+                <div flex-item flex-container="column">
+                    <div flex-item="2">
+                        <div class="p+">
+                            <strong class="fs-headline display-block">{{::feed.name}}</strong>
+                            <strong class="fs-subhead tc-black-2 display-block">{{::feed.text}}</strong>
+                        </div>
+                    </div>
+                    <div class="card__actions">
+                        <p style="color: green">Trùng khớp: 100%</p>
+                        <lx-button lx-color="blue">Chi tiết</lx-button>
+                        <lx-button lx-color="blue">Comment</lx-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
