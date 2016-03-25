@@ -9,7 +9,7 @@
             link: function (scope, elem) {
                 var scroller = $(document);
                 $(scroller).bind('scroll', function () {
-                    console.log("1. " + scroller.scrollTop());
+                    console.log("12. " + scroller.scrollTop());
                     console.log("2. " + scroller.height());
                     if (scroller.scrollTop() + 700 >= scroller.height()) {
                         {

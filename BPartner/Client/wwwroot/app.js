@@ -51,6 +51,18 @@
                          }
                      }
                  })
+                   .state('app.news',
+                 {
+                     url: '/news',
+                     views:
+                     {
+                         'main@':
+                         {
+                             templateUrl: 'templates/personal/feeds.html',
+                             controller: 'feedCtrl'
+                         }
+                     }
+                 })
                  .state('app.authorize',
                  {
                      url: '/authorize',
@@ -69,6 +81,18 @@
                      }
                  })
                  .state('app.profile',
+                 {
+                     url: '/profile',
+                     views:
+                     {
+                         'main@':
+                         {
+                             templateUrl: 'templates/personal/profile.html',
+                             controller: 'personalCtrl'
+                         }
+                     }
+                 })
+                   .state('app.friends',
                  {
                      url: '/profile',
                      views:
