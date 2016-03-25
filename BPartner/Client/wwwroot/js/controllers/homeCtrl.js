@@ -3,16 +3,24 @@
     angular.module('Controllers')
     .controller('homeCtrl', HomeCtrl);
 
-    HomeCtrl.$inject = ['$scope', '$firebaseArray', 'ChatService'];
-                             
-    function HomeCtrl($scope, $firebaseArray, ChatService) {
-       
-        $scope.newMessageText = '';
+    HomeCtrl.$inject = ['$scope', 'AuthorizeService', 'ChatService'];
 
-        $scope.messages = ChatService.messages;
+    function HomeCtrl($scope, AuthorizeSerivice, ChatService) {
+        init();
+        function init() {
+            var userInfo = AuthorizeSerivice.getUser();
+            if (userInfo !== null) {
+                var messsages = ChatService.messages;
+                var newMesssage = {};
 
-        $scope.addMessage = function () {
-            ChatService.addMessage($scope.newMessageText);
+                $scope.newMesssage = newMesssage;
+                $scope.messages = messsages;
+                $scope.addMessage = addMessage;
+            }
+        }
+        function addMessage() {
+            ChatService.addMessage(newMesssage.value);
+            newMesssage.value = '';
         };
     }
 })();

@@ -3,36 +3,30 @@
     angular.module('Controllers')
     .controller('registerCtrl', RegisterCtrl);
 
-    RegisterCtrl.$inject = ['$scope'];
+    RegisterCtrl.$inject = ['$scope', '$state', 'AuthorizeService'];
 
-    function RegisterCtrl($scope) {
-        $scope.emailValidation = emailValidation;
-        $scope.passwordValidation = passwordValidation;
-        $scope.register = register;
+    function RegisterCtrl($scope, $state, AuthorizeService) {
 
-        $scope.vm = {};
-
-        function emailValidation(email) {
-            return /^[0-9a-zA-Z]+([0-9a-zA-Z]*[-._+])*[0-9a-zA-Z]+@[0-9a-zA-Z]+([-.][0-9a-zA-Z]+)*([0-9a-zA-Z]*[.])[a-zA-Z]{2,6}$/.test(email);
-        }
-
-        function passwordValidation(password) {
-            return password != undefined && password.length > 0;
-        }
+        var user = { email: '', password: '', name: '', repeatedPassword: '' };
+        var vm = { isWaiting: false, isError: false, error: '' };
 
         function register() {
-            var ref = new Firebase(firebaseUrl);
-            ref.createUser({
-                email: $scope.vm.email,
-                password: $scope.vm.password
-            }, function (error, userData) {
-                if (error) {
-                    $scope.vm.hasError = true;
-                    $scope.vm.errorMsg = 'Error creating user';
-                } else {
-
+            $scope.vm.isWaiting = true;
+            AuthorizeService.register(user, function (result) {
+                $scope.vm.isWaiting = false;
+                if (result.success) {
+                    $state.go('unauthorize.login');
                 }
-            })
+                else {
+                    $scope.vm.error = result.error.message;
+                    $scope.vm.isError = true;
+                }
+                $scope.$apply();
+            });
         }
+
+        $scope.register = register;
+        $scope.user = user;
+        $scope.vm = vm;
     }
 })();

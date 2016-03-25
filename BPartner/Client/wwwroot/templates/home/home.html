@@ -1,16 +1,28 @@
-﻿<div class="main-section">
-    <div class="p+">
-        <div class="p+"  ng-repeat="m in messages">
-            <div class="card">
-                <div class="p+">
-                    {{m.text}}
-                </div>
+﻿<div class="main-section" flex-container="row" flex-align="center">
+    <div class="p+" flex-item="3">
+        <div class="card">
+            <div class="mt++">
+                <div class="divider divider--dark"></div>
+                <ul class="list mt++" style="max-height:450px;overflow-y:auto">
+                    <li class="list-row list-row--has-separator" ng-repeat="m in messages">
+                        <div class="list-row__primary">
+                            <img src="/images/user.png" width="40" height="40" class="img-round">
+                        </div>
+                        <div class="list-row__content">
+                            <span>{{m.text}}</span>
+                        </div>
+                        <div class="list-row__secondary">
+                            <lx-icon lx-id="information" lx-size="xs" lx-color="grey" lx-type="flat"></lx-icon>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
         <div class="card">
             <div class="p+">
                 <form ng-submit="addMessage()">
-                    <input type="text" ng-model="newMessageText">
+                    <input type="text" ng-model="newMesssage.value">
+                    <input type="submit" value="send" />
                 </form>
             </div>
         </div>
