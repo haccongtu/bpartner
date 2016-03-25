@@ -5,10 +5,10 @@
 
     HomeCtrl.$inject = ['$scope', 'AuthorizeService', 'ChatService'];
 
-    function HomeCtrl($scope, AuthorizeSerivice, ChatService) {
+    function HomeCtrl($scope, AuthorizeService, ChatService) {
         init();
         function init() {
-            var userInfo = AuthorizeSerivice.getUser();
+            var userInfo = AuthorizeService.getUser();
             if (userInfo !== null) {
                 var messsages = ChatService.messages;
                 var newMesssage = {};
